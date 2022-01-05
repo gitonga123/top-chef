@@ -10,7 +10,7 @@ use App\Models\User;
 class PageTest extends TestCase
 {
 
-
+    use RefreshDatabase;
     /**
      * Test an admin can access admin routes
      * 
