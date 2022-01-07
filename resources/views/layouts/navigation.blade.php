@@ -34,6 +34,19 @@
                     </x-slot>
 
                     <x-slot name="content">
+                        <!-- Profile -->
+                        @if(Auth::user()->is_admin)
+                            <x-dropdown-link :href="route('admin.profile.index')">
+                                    {{ __('Profile') }}
+                            </x-dropdown-link>
+                        @else
+                            <x-dropdown-link :href="route('chef.profile.index')">
+                                    {{ __('Profile') }}
+                            </x-dropdown-link>
+                        @endif
+                        
+                        <!-- End Profile -->
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -44,6 +57,7 @@
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                        <!-- End Authentication -->
                     </x-slot>
                 </x-dropdown>
             </div>
@@ -76,6 +90,18 @@
             </div>
 
             <div class="mt-3 space-y-1">
+                <!-- Profile -->
+                @if(Auth::user()->is_admin)
+                    <x-responsive-nav-link :href="route('admin.profile.index')">
+                            {{ __('Profile') }}
+                    </x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link :href="route('chef.profile.index')">
+                            {{ __('Profile') }}
+                    </x-responsive-nav-link>
+                @endif
+                <!-- End Profile -->
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
